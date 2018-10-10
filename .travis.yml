@@ -28,3 +28,4 @@ deploy:
   file: products/*.tar.gz
   on:
     repo: piever/SassBuilder
+    tags: true
