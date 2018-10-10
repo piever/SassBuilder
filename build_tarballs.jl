@@ -21,7 +21,6 @@ autoreconf --force --install
 cd ..
 make -C libsass -j5
 make -C libsass -j5 install
-exit
 
 """
 
@@ -49,9 +48,8 @@ products(prefix) = [
 
 # Dependencies that must be installed before this package can be built
 dependencies = [
-    
+
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
 build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies)
-
