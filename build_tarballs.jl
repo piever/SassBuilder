@@ -3,7 +3,6 @@
 using BinaryBuilder
 
 name = "SassBuilder"
-version = v"0.1.0"
 
 # Collection of sources required to build SassBuilder
 sources = [
