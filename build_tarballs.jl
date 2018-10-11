@@ -14,32 +14,16 @@ sources = [
 
 # Bash recipe for building across all platforms
 script = raw"""
-cd $WORKSPACE/srcdir
-cd libsass
+cd $WORKSPACE/srcdir/libsass
 autoreconf --force --install
 ./configure --prefix=$prefix --host=$target
-cd ..
-make -C libsass -j5
-make -C libsass -j5 install
-
+make -j${nproc}
+make install
 """
 
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
-platforms = [
-    Linux(:i686, libc=:glibc),
-    Linux(:x86_64, libc=:glibc),
-    Linux(:aarch64, libc=:glibc),
-    Linux(:armv7l, libc=:glibc, call_abi=:eabihf),
-    Linux(:powerpc64le, libc=:glibc),
-    Linux(:i686, libc=:musl),
-    Linux(:x86_64, libc=:musl),
-    Linux(:aarch64, libc=:musl),
-    Linux(:armv7l, libc=:musl, call_abi=:eabihf),
-    FreeBSD(:x86_64),
-    Windows(:i686),
-    Windows(:x86_64)
-]
+platforms = supported_platforms()
 
 # The products that we will ensure are always built
 products(prefix) = [
@@ -48,7 +32,6 @@ products(prefix) = [
 
 # Dependencies that must be installed before this package can be built
 dependencies = [
-
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
