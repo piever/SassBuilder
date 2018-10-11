@@ -2,7 +2,8 @@
 # `julia build_tarballs.jl --help` to see a usage message.
 using BinaryBuilder
 
-name = "SassBuilder"
+name = "libsass"
+version = v"3.5.4"
 
 # Collection of sources required to build SassBuilder
 sources = [
