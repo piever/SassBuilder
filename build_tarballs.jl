@@ -3,13 +3,12 @@
 using BinaryBuilder
 
 name = "libsass"
-version = v"3.5.4"
+version = v"3.5.5"
 
 # Collection of sources required to build SassBuilder
 sources = [
     "https://github.com/sass/libsass.git" =>
-    "1e52b74306b7d73a617396c912ca436dc55fd4d8",
-
+    "39e30874b9a5dd6a802c20e8b0470ba44eeba929",
 ]
 
 # Bash recipe for building across all platforms
