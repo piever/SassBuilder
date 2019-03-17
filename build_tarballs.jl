@@ -20,9 +20,28 @@ make -j${nproc}
 make install
 """
 
-# These are the platforms we will build for by default, unless further
-# platforms are passed in on the command line
-platforms = supported_platforms()
+platforms = [
+    # glibc Linuces
+    Linux(:i686),
+    Linux(:x86_64),
+    Linux(:aarch64),
+    Linux(:armv7l),
+    Linux(:powerpc64le),
+
+    # musl Linuces
+    Linux(:i686, :musl),
+    Linux(:x86_64, :musl),
+    Linux(:aarch64, :musl),
+    Linux(:armv7l, :musl),
+
+    # BSDs
+    MacOS(:x86_64),
+    FreeBSD(:x86_64),
+
+    # Windows
+    Windows(:i686),
+    Windows(:x86_64, compiler_abi = CompilerABI(:gcc7))
+]
 
 # The products that we will ensure are always built
 products(prefix) = [
